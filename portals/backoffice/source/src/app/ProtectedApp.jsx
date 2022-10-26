@@ -203,7 +203,7 @@ export default class Protected extends Component {
                                 }}
                                 >
                                     <Switch>
-                                        <Redirect exact from='/' to='/apis' />
+                                        <Redirect exact from='/' to='/api-products' />
                                         <Route path='/apis' component={DeferredAPIs} />
                                         <Route path='/api-products' component={DeferredAPIs} />
                                         <Route component={ResourceNotFound} />
