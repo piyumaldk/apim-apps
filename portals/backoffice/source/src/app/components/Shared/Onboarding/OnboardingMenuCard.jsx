@@ -82,7 +82,7 @@ const RestAPIMenu = (props) => {
                     <Grid
                         container
                         direction='column'
-                        justify='space-between'
+                        justifyContent='space-between'
                         alignItems='center'
                     >
                         <Grid item xs={12}>

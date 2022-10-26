@@ -130,7 +130,7 @@ const OperationPolicy: FC<OperationPolicyProps> = ({
                 className={classes.paperStyles}
             >
                 {isChoreoConnectEnabled ?
-                    <Grid container direction='row' justify='space-between' alignItems='center' spacing={0}>
+                    <Grid container direction='row' justifyContent='space-between' alignItems='center' spacing={0}>
                         <Grid item md={4} className={classes.operationSummaryGrid}>
                             <Badge
                                 invisible={!operation['x-wso2-new']}
@@ -179,7 +179,7 @@ const OperationPolicy: FC<OperationPolicyProps> = ({
                         id={verb + target}
                         classes={{ content: classes.contentNoMargin }}
                     >
-                        <Grid container direction='row' justify='space-between' alignItems='center' spacing={0}>
+                        <Grid container direction='row' justifyContent='space-between' alignItems='center' spacing={0}>
                             <Grid item md={4} className={classes.operationSummaryGrid}>
                                 <Badge
                                     invisible={!operation['x-wso2-new']}

@@ -181,7 +181,7 @@ function MockImplEndpoints(props) {
                     </div>
                 </RadioGroup>
             </Grid>
-            <Grid container direction='row' justify='flex-start' spacing={2} alignItems='stretch'>
+            <Grid container direction='row' justifyContent='flex-start' spacing={2} alignItems='stretch'>
                 <Grid item md={12}>
                     <Paper>
                         {Object.keys(paths).map((path) => {
@@ -191,7 +191,7 @@ function MockImplEndpoints(props) {
                                         <Grid
                                             container
                                             direction='column'
-                                            justify='flex-start'
+                                            justifyContent='flex-start'
                                             spacing={1}
                                             alignItems='stretch'
                                         >

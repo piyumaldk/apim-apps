@@ -443,7 +443,7 @@ export default function RuntimeConfiguration() {
                         <APISecurity api={apiConfig} configDispatcher={configDispatcher} />
                     </Paper>
                 ) : (
-                    <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={8}>
+                    <Grid container direction='row' justifyContent='space-around' alignItems='stretch' spacing={8}>
                         <Grid item xs={12} md={7}>
                             <Typography className={classes.heading} variant='h6' component='h3'>
                                 { isAsyncAPI
@@ -461,7 +461,7 @@ export default function RuntimeConfiguration() {
                             </Typography>
                             <Grid
                                 direction=' column'
-                                justify='space-between'
+                                justifyContent='space-between'
                                 alignItems='stretch'
                                 spacing={6}
                             >

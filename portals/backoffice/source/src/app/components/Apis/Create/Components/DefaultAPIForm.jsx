@@ -478,7 +478,7 @@ export default function DefaultAPIForm(props) {
 
                 {!appendChildrenBeforeEndpoint && !!children && children}
             </form>
-            <Grid container direction='row' justify='flex-end' alignItems='center'>
+            <Grid container direction='row' justifyContent='flex-end' alignItems='center'>
                 <Grid item>
                     <Typography variant='caption' display='block' gutterBottom>
                         <sup style={{ color: 'red' }}>*</sup>

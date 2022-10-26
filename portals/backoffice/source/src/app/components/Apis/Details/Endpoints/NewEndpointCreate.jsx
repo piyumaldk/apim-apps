@@ -173,7 +173,7 @@ function NewEndpointCreate(props) {
                     defaultMessage='Select an Endpoint Type to Add'
                 />
             </Typography>
-            <Grid container justify='flex-start' spacing={2}>
+            <Grid container justifyContent='flex-start' spacing={2}>
                 {eligibleTypes.map(((type) => {
                     return (
                         <Grid item className={classes.inlineMessageContainer}>

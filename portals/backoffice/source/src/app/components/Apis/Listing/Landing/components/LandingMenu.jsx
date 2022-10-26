@@ -79,7 +79,7 @@ const   LandingMenu = (props) => {
                 <Grid
                     container
                     direction='row'
-                    justify='center'
+                    justifyContent='center'
                     alignItems='center'
                 >
                     <Grid item xs={12}>
@@ -130,7 +130,7 @@ const   LandingMenu = (props) => {
                             <Grid
                                 container
                                 direction='row'
-                                justify='flex-start'
+                                justifyContent='flex-start'
                                 alignItems='center'
                                 spacing={4}
                             >

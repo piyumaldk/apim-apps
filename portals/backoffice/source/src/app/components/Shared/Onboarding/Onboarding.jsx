@@ -24,7 +24,7 @@ const Onboarding = (props) => {
             <Grid
                 container
                 direction='column'
-                justify='center'
+                justifyContent='center'
             >
                 <Grid item xs={12}>
                     <Box pt={isXsOrBelow ? 2 : 7} />
@@ -45,7 +45,7 @@ const Onboarding = (props) => {
                         <Grid
                             container
                             direction='row'
-                            justify='center'
+                            justifyContent='center'
                             alignItems='flex-start'
                         >
                             {children}

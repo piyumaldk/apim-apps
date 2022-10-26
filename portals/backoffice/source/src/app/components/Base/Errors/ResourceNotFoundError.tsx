@@ -42,7 +42,7 @@ const ResourceNotFoundError: FC<ResourceNotFoundErrorProps> = ({ message }) => {
                 <Box padding={4}>
                     <Paper elevation={0}>
                         <Box padding={4}>
-                            <Grid container alignItems='center' justify='center' style={{ height: '100%' }}>
+                            <Grid container alignItems='center' justifyContent='center' style={{ height: '100%' }}>
                                 <Grid item xs={12} md={6}>
                                     <Typography variant='h5' gutterBottom>
                                         {message ? message.title : (

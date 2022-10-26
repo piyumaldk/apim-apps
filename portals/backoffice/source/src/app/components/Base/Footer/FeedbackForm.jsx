@@ -120,7 +120,7 @@ export default function FeedbackForm() {
             >
                 <DialogTitle>Send feedback</DialogTitle>
                 <DialogContent>
-                    <Grid container spacing={3} direction='row' justify='flex-start' alignItems='flex-start'>
+                    <Grid container spacing={3} direction='row' justifyContent='flex-start' alignItems='flex-start'>
                         <Grid item md={12}>
                             <ButtonGroup disabled={isSending} size='medium' aria-label='available feedback scores'>
                                 <Tooltip title='Good'>

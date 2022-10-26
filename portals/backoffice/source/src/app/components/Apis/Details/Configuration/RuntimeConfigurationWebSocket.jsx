@@ -230,7 +230,7 @@ export default function RuntimeConfiguration() {
                 </Typography>
             </Box>
             <div className={classes.contentWrapper}>
-                <Grid container direction='row' justify='space-around' alignItems='stretch' spacing={8}>
+                <Grid container direction='row' justifyContent='space-around' alignItems='stretch' spacing={8}>
                     <Grid item xs={12} md={7} style={{ marginBottom: 30, position: 'relative' }}>
                         <Typography className={classes.heading} variant='h6'>
                             <FormattedMessage

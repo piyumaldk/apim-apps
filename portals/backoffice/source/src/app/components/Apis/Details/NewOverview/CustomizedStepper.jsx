@@ -243,7 +243,7 @@ export default function CustomizedStepper() {
                             container
                             direction='row'
                             alignItems='center'
-                            justify='center'
+                            justifyContent='center'
                         >
                             <Grid item>
                                 <CheckIcon className={classes.iconTrue} />
@@ -276,7 +276,7 @@ export default function CustomizedStepper() {
                                     container
                                     direction='row'
                                     alignItems='center'
-                                    justify='center'
+                                    justifyContent='center'
                                 >
                                     <Grid item>
                                         <Typography variant='h6' display='inline'>
@@ -418,7 +418,7 @@ export default function CustomizedStepper() {
                                     <Grid
                                         container
                                         direction='row'
-                                        justify='center'
+                                        justifyContent='center'
                                     >
                                         <Grid item>
                                             {api ? (
@@ -443,7 +443,7 @@ export default function CustomizedStepper() {
                                             <Grid
                                                 container
                                                 direction='row'
-                                                justify='center'
+                                                justifyContent='center'
                                                 style={{ marginLeft: '2px' }}
                                             >
                                                 <Grid item>
@@ -485,7 +485,7 @@ export default function CustomizedStepper() {
                                             <Grid
                                                 container
                                                 direction='row'
-                                                justify='center'
+                                                justifyContent='center'
                                                 style={{ marginLeft: '2px' }}
                                             >
                                                 <Grid item>
@@ -534,7 +534,7 @@ export default function CustomizedStepper() {
                                         container
                                         direction='row'
                                         alignItems='center'
-                                        justify='center'
+                                        justifyContent='center'
                                     >
                                         <Box mb={1}>
                                             <Grid item>
@@ -585,7 +585,7 @@ export default function CustomizedStepper() {
                                         container
                                         direction='row'
                                         alignItems='center'
-                                        justify='center'
+                                        justifyContent='center'
                                     >
                                         <Box ml={1} mb={1}>
                                             <Grid item>

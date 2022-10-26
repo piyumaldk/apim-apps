@@ -455,7 +455,7 @@ const Policies: React.FC = () => {
                                             <Grid
                                                 container
                                                 direction='column'
-                                                justify='flex-start'
+                                                justifyContent='flex-start'
                                                 spacing={1}
                                                 alignItems='stretch'
                                             >
@@ -496,7 +496,7 @@ const Policies: React.FC = () => {
                                             <Grid
                                                 container
                                                 direction='column'
-                                                justify='flex-start'
+                                                justifyContent='flex-start'
                                                 spacing={1}
                                                 alignItems='stretch'
                                             >

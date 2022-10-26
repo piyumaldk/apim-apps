@@ -156,7 +156,7 @@ function Topics(props) {
 
     return (
         <Paper className={classes.root}>
-            <Grid container direction='row' justify='center' alignItems='center'>
+            <Grid container direction='row' justifyContent='center' alignItems='center'>
                 <Grid item xs={12}>
                     <Typography component='h4' align='left'>
                         Add New Topic
@@ -189,7 +189,7 @@ function Topics(props) {
                         }}
                     />
                 </Grid>
-                <Grid container direction='row' justify='flex-start' alignItems='center' spacing={2}>
+                <Grid container direction='row' justifyContent='flex-start' alignItems='center' spacing={2}>
                     <Grid item>
                         <Button
                             id='itest-id-apitopics-addtopic'

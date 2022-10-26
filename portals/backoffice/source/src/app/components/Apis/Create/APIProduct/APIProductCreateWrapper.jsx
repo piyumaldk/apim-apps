@@ -374,7 +374,7 @@ export default function ApiProductCreateWrapper(props) {
                             className={wizardStep === 1 && classes.saveButton}
                             container
                             direction='row'
-                            justify='flex-start'
+                            justifyContent='flex-start'
                             alignItems='center'
                             spacing={2}
                         >

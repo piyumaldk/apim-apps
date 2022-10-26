@@ -100,7 +100,7 @@ function Subscriptions(props) {
 
     if (typeof tenants !== 'number' || typeof subscriptions !== 'number') {
         return (
-            <Grid container direction='row' justify='center' alignItems='center'>
+            <Grid container direction='row' justifyContent='center' alignItems='center'>
                 <Grid item>
                     <CircularProgress />
                 </Grid>

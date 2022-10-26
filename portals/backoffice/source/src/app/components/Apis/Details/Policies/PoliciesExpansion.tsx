@@ -248,7 +248,7 @@ const PoliciesExpansion: FC<PoliciesExpansionProps> = ({
                 spacing={2}
                 container
                 direction='row'
-                justify='flex-start'
+                justifyContent='flex-start'
                 alignItems='flex-start'
             >
                 <Grid item xs={12} md={12}>

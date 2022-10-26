@@ -82,7 +82,7 @@ const APICreateMenu = () => {
                         className={popover}
                         container
                         direction='row'
-                        justify='space-around'
+                        justifyContent='space-around'
                         alignItems='flex-start'
                         spacing={2}
                     >

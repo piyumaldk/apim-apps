@@ -51,7 +51,7 @@ function MockedOASOperation(props) {
     return (
         <>
             {operation.responses ?
-                <Grid spacing={2} container direction='row' justify='flex-start' alignItems='flex-start'>
+                <Grid spacing={2} container direction='row' justifyContent='flex-start' alignItems='flex-start'>
                     <Grid item xs={12}>
                         <Typography gutterBottom variant='subtitle1'>
                             <FormattedMessage
