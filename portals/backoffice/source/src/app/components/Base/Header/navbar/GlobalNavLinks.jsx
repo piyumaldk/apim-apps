@@ -63,12 +63,12 @@ function GlobalNavLinks(props) {
                         <GlobalNavLink
                             to='/api-products'
                             type='api-product'
-                            title='API Products'
+                            title='BackOffice APIs'
                             active={selected === 'api-products'}
                         >
                             <FormattedMessage
                                 id='Base.Header.navbar.GlobalNavBar.api.products'
-                                defaultMessage='API Products'
+                                defaultMessage='BackOffice APIs'
                             />
                         </GlobalNavLink>
                     )}
