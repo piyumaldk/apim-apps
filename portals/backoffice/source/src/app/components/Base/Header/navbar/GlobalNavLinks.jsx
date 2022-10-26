@@ -69,17 +69,6 @@ function GlobalNavLinks(props) {
                         defaultMessage='APIs'
                     />
                 </GlobalNavLink>
-                <GlobalNavLink
-                    to='/service-catalog'
-                    type='service-catalog'
-                    title='Services'
-                    active={selected === 'service-catalog'}
-                >
-                    <FormattedMessage
-                        id='Base.Header.navbar.GlobalNavBar.Service.Catalog'
-                        defaultMessage='Services'
-                    />
-                </GlobalNavLink>
                 { (readOnlyUser || publisherUser)
                     && (
                         <GlobalNavLink
