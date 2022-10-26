@@ -58,17 +58,6 @@ function GlobalNavLinks(props) {
     return (
         <Box mt={10}>
             <List className={classes.listRoot} component='nav' name='primaryNavigation' aria-label='primary navigation'>
-                <GlobalNavLink
-                    to='/apis'
-                    type='apis'
-                    title='APIs'
-                    active={selected === 'apis'}
-                >
-                    <FormattedMessage
-                        id='Base.Header.navbar.GlobalNavBar.apis'
-                        defaultMessage='APIs'
-                    />
-                </GlobalNavLink>
                 { (readOnlyUser || publisherUser)
                     && (
                         <GlobalNavLink
@@ -83,6 +72,17 @@ function GlobalNavLinks(props) {
                             />
                         </GlobalNavLink>
                     )}
+                <GlobalNavLink
+                    to='/apis'
+                    type='apis'
+                    title='APIs'
+                    active={selected === 'apis'}
+                >
+                    <FormattedMessage
+                        id='Base.Header.navbar.GlobalNavBar.apis'
+                        defaultMessage='APIs'
+                    />
+                </GlobalNavLink>
                 {analyticsMenuEnabled && (
                     <>
                         <Divider />
