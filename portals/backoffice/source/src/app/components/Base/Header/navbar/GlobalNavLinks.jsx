@@ -83,18 +83,6 @@ function GlobalNavLinks(props) {
                             />
                         </GlobalNavLink>
                     )}
-                <GlobalNavLink
-                    id='policies'
-                    to='/policies'
-                    type='policies'
-                    title='Policies'
-                    active={selected === 'policies'}
-                >
-                    <FormattedMessage
-                        id='Base.Header.navbar.GlobalNavBar.common.policies'
-                        defaultMessage='Policies'
-                    />
-                </GlobalNavLink>
                 {analyticsMenuEnabled && (
                     <>
                         <Divider />
