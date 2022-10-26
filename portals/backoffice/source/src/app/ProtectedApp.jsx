@@ -31,7 +31,6 @@ import AppErrorBoundary from 'AppComponents/Shared/AppErrorBoundary/AppErrorBoun
 import RedirectToLogin from 'AppComponents/Shared/RedirectToLogin';
 import { IntlProvider } from 'react-intl';
 import { AppContextProvider } from 'AppComponents/Shared/AppContext';
-import ServiceCatalogRouting from 'AppComponents/ServiceCatalog/ServiceCatalogRouting';
 import Progress from 'AppComponents/Shared/Progress';
 import Configurations from 'Config';
 import { QueryClientProviderX } from 'AppData/hooks/ReactQueryX';
@@ -211,7 +210,6 @@ export default class Protected extends Component {
                                         <Route path='/api-products' component={DeferredAPIs} />
                                         <Route path='/scopes' component={Scopes} />
                                         <Route path='/policies' component={CommonPolicies} />
-                                        <Route path='/service-catalog' component={ServiceCatalogRouting} />
                                         <Route component={ResourceNotFound} />
                                     </Switch>
                                 </AppContextProvider>
