@@ -34,7 +34,6 @@ import { AppContextProvider } from 'AppComponents/Shared/AppContext';
 import Progress from 'AppComponents/Shared/Progress';
 import Configurations from 'Config';
 import { QueryClientProviderX } from 'AppData/hooks/ReactQueryX';
-import Scopes from 'AppComponents/Scopes/Scopes';
 import CommonPolicies from 'AppComponents/CommonPolicies/CommonPolicies';
 import merge from 'lodash/merge';
 
@@ -208,7 +207,6 @@ export default class Protected extends Component {
                                         <Redirect exact from='/' to='/apis' />
                                         <Route path='/apis' component={DeferredAPIs} />
                                         <Route path='/api-products' component={DeferredAPIs} />
-                                        <Route path='/scopes' component={Scopes} />
                                         <Route path='/policies' component={CommonPolicies} />
                                         <Route component={ResourceNotFound} />
                                     </Switch>
