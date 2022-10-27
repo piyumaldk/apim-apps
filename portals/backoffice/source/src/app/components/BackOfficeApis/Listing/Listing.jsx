@@ -79,8 +79,8 @@ function Listing() {
         return <ResourceNotFound response={0}/>;
     }
 
-    // This count should be 0 when no BackOffice APIs and should be >0 when have. (Length)
-    const haveBackOfficeData = 0;
+    // This count should be null when no BackOffice APIs and should be >0 when have. (Length)
+    const haveBackOfficeData = null;
     return (
         <Box flexGrow={1}>
             <Grid
