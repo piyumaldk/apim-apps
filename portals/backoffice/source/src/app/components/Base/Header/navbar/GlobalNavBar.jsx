@@ -78,7 +78,7 @@ const GlobalNavBar = (props) => {
 
     let isRootPage = false;
     const { pathname } = location;
-    if (/^\/(apis|api-products|scopes|policies|service-catalog)($|\/$)/g.test(pathname)) {
+    if (/^\/(apis|api-products|scopes|policies|service-catalog|backoffice-apis)($|\/$)/g.test(pathname)) {
         isRootPage = true;
     }
     useEffect(() => {

@@ -94,6 +94,17 @@ function GlobalNavLinks(props) {
                         defaultMessage='Services'
                     />
                 </GlobalNavLink>
+                <GlobalNavLink
+                    to='/backoffice-apis'
+                    type='apis'
+                    title='BackOffice APIs'
+                    active={selected === 'backoffice-apis'}
+                >
+                    <FormattedMessage
+                        id='Base.Header.navbar.GlobalNavBar.apis'
+                        defaultMessage='BackOffice APIs'
+                    />
+                </GlobalNavLink>
                 {analyticsMenuEnabled && (
                     <>
                         <Divider />
