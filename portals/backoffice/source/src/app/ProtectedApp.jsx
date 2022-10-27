@@ -32,6 +32,7 @@ import RedirectToLogin from 'AppComponents/Shared/RedirectToLogin';
 import { IntlProvider } from 'react-intl';
 import { AppContextProvider } from 'AppComponents/Shared/AppContext';
 import Progress from 'AppComponents/Shared/Progress';
+import ServiceCatalogRouting from 'AppComponents/ServiceCatalog/ServiceCatalogRouting';
 import Configurations from 'Config';
 import { QueryClientProviderX } from 'AppData/hooks/ReactQueryX';
 import merge from 'lodash/merge';
@@ -206,6 +207,7 @@ export default class Protected extends Component {
                                         <Redirect exact from='/' to='/api-products' />
                                         <Route path='/apis' component={DeferredAPIs} />
                                         <Route path='/api-products' component={DeferredAPIs} />
+                                        <Route path='/service-catalog' component={ServiceCatalogRouting} />
                                         <Route component={ResourceNotFound} />
                                     </Switch>
                                 </AppContextProvider>
