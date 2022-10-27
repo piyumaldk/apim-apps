@@ -18,7 +18,7 @@
 
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Listing from 'AppComponents/BackOfficeAPI/Listing/Listing';
+import Listing from 'AppComponents/BackOfficeApis/Listing/Listing';
 
 const BackofficeRouting = () => {
     return (

@@ -36,7 +36,7 @@ import ServiceCatalogRouting from 'AppComponents/ServiceCatalog/ServiceCatalogRo
 import Configurations from 'Config';
 import { QueryClientProviderX } from 'AppData/hooks/ReactQueryX';
 import merge from 'lodash/merge';
-import BackofficeRouting from 'AppComponents/BackOfficeAPI/BackOfficeRouting';
+import BackofficeRouting from 'AppComponents/BackOfficeApis/BackOfficeRouting';
 
 const ThemeProvider = CoreThemeProvider || NormalThemeProvider;
 const Apis = lazy(() => import('AppComponents/Apis/Apis' /* webpackChunkName: "DeferredAPIs" */));

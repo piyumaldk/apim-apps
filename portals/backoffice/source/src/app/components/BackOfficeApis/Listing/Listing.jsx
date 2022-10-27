@@ -23,7 +23,6 @@ import ResourceNotFound from 'AppComponents/Base/Errors/ResourceNotFound';
 // import Alert from 'AppComponents/Shared/Alert';
 // import ServiceCatalog from 'AppData/ServiceCatalog';
 import Onboarding from 'AppComponents/ServiceCatalog/Listing/Onboarding';
-import ServicesTableView from 'AppComponents/ServiceCatalog/Listing/components/ServicesTableView';
 import ServiceCatalogTopMenu from 'AppComponents/ServiceCatalog/Listing/components/ServiceCatalogTopMenu';
 import Alert from 'AppComponents/Shared/Alert';
 import Grid from '@material-ui/core/Grid';
@@ -71,15 +70,11 @@ function Listing() {
 
     useEffect(getData, []);
 
-    const onDelete = (id) => {
-        console.log(id);
-    };
-
     if (loading || !backOfficeData) {
         return <Progress per={90} message='Loading BackOffice APIs ...' />;
     }
     if (notFound) {
-        return <ResourceNotFound />;
+        return <ResourceNotFound response={0}/>;
     }
     const haveBackOfficeData = 1;
     return (
@@ -103,9 +98,9 @@ function Listing() {
                         {!haveBackOfficeData && <Onboarding />}
                         {haveBackOfficeData && (isGridView
                             ? (
-                                <h1>BackOffice API Page</h1>
+                                <h1>BackOffice API Page Gird View</h1>
                             )
-                            : <ServicesTableView serviceList={haveBackOfficeData.list} onDelete={onDelete} />)}
+                            : <h1>BackOffice API Page Table View</h1>)}
                     </Grid>
                 </Box>
             </Grid>
