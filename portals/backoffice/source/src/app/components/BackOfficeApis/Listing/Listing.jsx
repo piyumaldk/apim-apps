@@ -23,11 +23,11 @@ import ResourceNotFound from 'AppComponents/Base/Errors/ResourceNotFound';
 // import Alert from 'AppComponents/Shared/Alert';
 // import ServiceCatalog from 'AppData/ServiceCatalog';
 import Onboarding from 'AppComponents/ServiceCatalog/Listing/Onboarding';
-import ServiceCatalogTopMenu from 'AppComponents/ServiceCatalog/Listing/components/ServiceCatalogTopMenu';
 import Alert from 'AppComponents/Shared/Alert';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import API from 'AppData/api';
+import BackOfficeApisTopMenu from './components/BackOfficeApisTopMenu';
 
 /**
  * Listing for service catalog entries
@@ -86,10 +86,10 @@ function Listing() {
                 alignItems='stretch'
             >
                 <Grid xs={12}>
-                    <ServiceCatalogTopMenu
-                        showServiceToggle={haveBackOfficeData}
+                    <BackOfficeApisTopMenu
+                        showBackOfficeApiToggle={haveBackOfficeData}
                         isGridView={isGridView}
-                        totalServices='5'
+                        totalBackOfficeApis='5'
                         setIsGridView={setIsGridView}
                     />
                 </Grid>
