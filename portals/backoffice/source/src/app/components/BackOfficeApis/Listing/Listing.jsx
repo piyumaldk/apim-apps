@@ -48,15 +48,17 @@ function Listing() {
         promisedServices.then((data) => {
             const { body } = data;
             setBackOfficeData(body);
+            // eslint-disable-next-line no-console
             console.log(data);
         }).catch((error) => {
+            // eslint-disable-next-line no-console
             console.error(error);
             if (error.response) {
                 Alert.error(error.response.body.description);
             } else {
                 Alert.error(intl.formatMessage({
-                    defaultMessage: 'Error while loading services',
-                    id: 'ServiceCatalog.Listing.Listing.error.loading',
+                    defaultMessage: 'Error while loading BackOffice APIs',
+                    id: 'BackOfficeApis.Listing.Listing.error.loading',
                 }));
             }
             const { status } = error;
@@ -76,7 +78,9 @@ function Listing() {
     if (notFound) {
         return <ResourceNotFound response={0}/>;
     }
-    const haveBackOfficeData = 1;
+
+    // This count should be 0 when no BackOffice APIs and should be >0 when have. (Length)
+    const haveBackOfficeData = 0;
     return (
         <Box flexGrow={1}>
             <Grid
