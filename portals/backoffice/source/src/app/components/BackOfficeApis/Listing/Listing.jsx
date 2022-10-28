@@ -22,12 +22,12 @@ import { Progress } from 'AppComponents/Shared';
 import ResourceNotFound from 'AppComponents/Base/Errors/ResourceNotFound';
 // import Alert from 'AppComponents/Shared/Alert';
 // import ServiceCatalog from 'AppData/ServiceCatalog';
-import Onboarding from 'AppComponents/ServiceCatalog/Listing/Onboarding';
+import Onboarding from 'AppComponents/BackOfficeApis/Listing/Onboarding';
 import Alert from 'AppComponents/Shared/Alert';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import API from 'AppData/api';
-import BackOfficeApisTopMenu from './components/BackOfficeApisTopMenu';
+import BackOfficeApisTopMenu from 'AppComponents/BackOfficeApis/Listing/components/BackOfficeApisTopMenu';
 
 /**
  * Listing for service catalog entries
