@@ -23,7 +23,7 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import LaunchIcon from '@material-ui/icons/Launch';
-import OnboardingMenuCard from 'AppComponents/ServiceCatalog/Listing/components/OnboardingMenuCard';
+import OnboardingMenuCard from 'AppComponents/BackOfficeApis/Listing/components/OnboardingMenuCard.tsx';
 import Configurations from 'Config';
 
 const useStyles = makeStyles((theme) => ({
