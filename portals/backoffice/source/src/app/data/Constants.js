@@ -57,6 +57,11 @@ const CONSTS = {
     PATH_TEMPLATES: {
         COMMON_POLICIES: '/policies',
         COMMON_POLICY_CREATE: '/policies/create',
+    },
+    BACKOFFICE: {
+        BO_API_ROUTE : '/backoffice-apis',
+        BO_APIS : 'BackOffice APIs',
+        BO_API : 'BackOffice API',
     }
 };
 

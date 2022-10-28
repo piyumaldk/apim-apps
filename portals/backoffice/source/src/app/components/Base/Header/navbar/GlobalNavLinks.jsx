@@ -25,6 +25,7 @@ import { FormattedMessage } from 'react-intl';
 import AuthManager from 'AppData/AuthManager';
 import { makeStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
+import CONSTS from 'AppData/Constants';
 
 import GlobalNavLink from './GlobalNavLink';
 
@@ -95,10 +96,10 @@ function GlobalNavLinks(props) {
                     />
                 </GlobalNavLink>
                 <GlobalNavLink
-                    to='/backoffice-apis'
+                    to={CONSTS.BACKOFFICE.BO_API_ROUTE}
                     type='apis'
-                    title='BackOffice APIs'
-                    active={selected === 'backoffice-apis'}
+                    title={CONSTS.BACKOFFICE.BO_APIS}
+                    active={selected === CONSTS.BACKOFFICE.BO_API_ROUTE}
                 >
                     <FormattedMessage
                         id='Base.Header.navbar.GlobalNavBar.apis'

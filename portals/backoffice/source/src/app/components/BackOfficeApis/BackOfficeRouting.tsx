@@ -19,13 +19,14 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Listing from 'AppComponents/BackOfficeApis/Listing/Listing';
+import CONSTS from 'AppData/Constants';
 
 const BackofficeRouting = () => {
     return (
         <Switch>
             <Route
                 exact
-                path='/backoffice-apis'
+                path={CONSTS.BACKOFFICE.BO_API_ROUTE}
                 key={Date.now()}
                 component={Listing}
             />
