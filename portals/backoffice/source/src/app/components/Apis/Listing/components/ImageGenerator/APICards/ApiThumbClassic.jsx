@@ -23,14 +23,11 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import { isRestricted } from 'AppData/AuthManager';
 import Typography from '@material-ui/core/Typography';
 import Chip from '@material-ui/core/Chip';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import green from '@material-ui/core/colors/green';
 import API from 'AppData/api';
-import DeleteApiButton from 'AppComponents/Apis/Details/components/DeleteApiButton';
 
 import BaseThumbnail from '../BaseThumbnail';
 
@@ -153,19 +150,8 @@ class APIThumb extends Component {
      */
     constructor(props) {
         super(props);
-        this.state = { isHover: false, loading: false };
+        this.state = { isHover: false };
         this.toggleMouseOver = this.toggleMouseOver.bind(this);
-        this.setLoading = this.setLoading.bind(this);
-    }
-
-    /**
-     *
-     * Set loading state
-     * @param {String} loadingState New state value
-     * @memberof APIThumb
-     */
-    setLoading(loadingState) {
-        this.setState({ loading: loadingState });
     }
 
     /**
@@ -185,9 +171,9 @@ class APIThumb extends Component {
      */
     render() {
         const {
-            classes, api, isAPIProduct, theme, updateData,
+            classes, api, isAPIProduct, theme,
         } = this.props;
-        const { isHover, loading } = this.state;
+        const { isHover } = this.state;
         let overviewPath = '';
         if (api.apiType) {
             overviewPath = isAPIProduct ? `/api-products/${api.id}/overview` : `/apis/${api.id}/overview`;
@@ -327,17 +313,6 @@ class APIThumb extends Component {
                             style={{ backgroundColor: '#00c995' }}
                         />
                     )}
-                    {!isRestricted(['apim:api_create'], api) && (
-                        <>
-                            <DeleteApiButton
-                                setLoading={this.setLoading}
-                                api={api}
-                                updateData={updateData}
-                                isAPIProduct={isAPIProduct}
-                            />
-                            {loading && <CircularProgress className={classes.deleteProgress} />}
-                        </>
-                    )}
                 </CardActions>
             </Card>
         );
@@ -352,7 +327,6 @@ APIThumb.propTypes = {
         apiType: PropTypes.string.isRequired,
     }).isRequired,
     isAPIProduct: PropTypes.bool.isRequired,
-    updateData: PropTypes.func.isRequired,
 };
 
 export default injectIntl(withStyles(styles, { withTheme: true })(APIThumb));

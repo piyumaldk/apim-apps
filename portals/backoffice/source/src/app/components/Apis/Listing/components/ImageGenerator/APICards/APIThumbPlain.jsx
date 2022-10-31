@@ -6,13 +6,10 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Chip from '@material-ui/core/Chip';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import { isRestricted } from 'AppData/AuthManager';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import Api from 'AppData/api';
-import DeleteApiButton from 'AppComponents/Apis/Details/components/DeleteApiButton';
 import Configurations from 'Config';
 
 import getIcon from './ImageUtils';
@@ -80,7 +77,7 @@ function APIThumbPlain(props) {
     const theme = useTheme();
     const classes = useStyles();
     const {
-        api, showInfo, isAPIProduct, updateData,
+        api, showInfo, isAPIProduct,
     } = props;
     const { custom: { thumbnail } } = theme;
     const {
@@ -94,7 +91,6 @@ function APIThumbPlain(props) {
     });
     const [imageObj, setIMageObj] = useState(null);
     const [imageLoaded, setImageLoaded] = useState(false);
-    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const restApi = new Api();
@@ -266,17 +262,6 @@ function APIThumbPlain(props) {
                             />
                         )}
                     </Box>
-                    {!isRestricted(['apim:api_create'], api) && (
-                        <>
-                            <DeleteApiButton
-                                setLoading={setLoading}
-                                api={api}
-                                updateData={updateData}
-                                isAPIProduct={isAPIProduct}
-                            />
-                            {loading && <CircularProgress className={classes.deleteProgress} />}
-                        </>
-                    )}
                 </Box>
             </CardContent>
         </Card>
@@ -289,7 +274,6 @@ APIThumbPlain.defaultProps = {
 };
 APIThumbPlain.propTypes = {
     showInfo: PropTypes.bool,
-    updateData: PropTypes.func.isRequired,
     isAPIProduct: PropTypes.bool.isRequired,
 };
 
