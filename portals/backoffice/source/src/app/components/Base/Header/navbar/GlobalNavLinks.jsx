@@ -22,7 +22,6 @@ import List from '@material-ui/core/List';
 import LaunchIcon from '@material-ui/icons/Launch';
 import { useTheme } from '@material-ui/styles';
 import { FormattedMessage } from 'react-intl';
-import AuthManager from 'AppData/AuthManager';
 import { makeStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 
@@ -47,9 +46,6 @@ const useStyles = makeStyles((theme) => ({
  * @returns
  */
 function GlobalNavLinks(props) {
-    const publisherUser = !AuthManager.isNotPublisher();
-    const readOnlyUser = AuthManager.isReadOnlyUser();
-    const adminUser = AuthManager.isAdminUser();
     const classes = useStyles();
     const { selected } = props;
     const theme = useTheme();
@@ -67,55 +63,6 @@ function GlobalNavLinks(props) {
                     <FormattedMessage
                         id='Base.Header.navbar.GlobalNavBar.apis'
                         defaultMessage='APIs'
-                    />
-                </GlobalNavLink>
-                <GlobalNavLink
-                    to='/service-catalog'
-                    type='service-catalog'
-                    title='Services'
-                    active={selected === 'service-catalog'}
-                >
-                    <FormattedMessage
-                        id='Base.Header.navbar.GlobalNavBar.Service.Catalog'
-                        defaultMessage='Services'
-                    />
-                </GlobalNavLink>
-                { (readOnlyUser || publisherUser)
-                    && (
-                        <GlobalNavLink
-                            to='/api-products'
-                            type='api-product'
-                            title='API Products'
-                            active={selected === 'api-products'}
-                        >
-                            <FormattedMessage
-                                id='Base.Header.navbar.GlobalNavBar.api.products'
-                                defaultMessage='API Products'
-                            />
-                        </GlobalNavLink>
-                    )}
-                {(adminUser)
-                    && (
-                        <GlobalNavLink
-                            id='scope'
-                            to='/scopes'
-                            type='scopes'
-                            title='Scopes'
-                            active={selected === 'scopes'}
-                        >
-                            <FormattedMessage id='Base.Header.navbar.GlobalNavBar.scopes' defaultMessage='Scopes' />
-                        </GlobalNavLink>
-                    )}
-                <GlobalNavLink
-                    id='policies'
-                    to='/policies'
-                    type='policies'
-                    title='Policies'
-                    active={selected === 'policies'}
-                >
-                    <FormattedMessage
-                        id='Base.Header.navbar.GlobalNavBar.common.policies'
-                        defaultMessage='Policies'
                     />
                 </GlobalNavLink>
                 {analyticsMenuEnabled && (
