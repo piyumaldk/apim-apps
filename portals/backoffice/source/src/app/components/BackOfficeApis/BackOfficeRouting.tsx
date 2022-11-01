@@ -26,7 +26,7 @@ const BackofficeRouting = () => {
         <Switch>
             <Route
                 exact
-                path={CONSTS.BACKOFFICE.BO_API_ROUTE}
+                path='/backoffice-apis'
                 key={Date.now()}
                 component={Listing}
             />

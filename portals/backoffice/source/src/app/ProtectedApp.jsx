@@ -37,7 +37,6 @@ import Configurations from 'Config';
 import { QueryClientProviderX } from 'AppData/hooks/ReactQueryX';
 import merge from 'lodash/merge';
 import BackofficeRouting from 'AppComponents/BackOfficeApis/BackOfficeRouting';
-import CONSTS from 'AppData/Constants';
 
 const ThemeProvider = CoreThemeProvider || NormalThemeProvider;
 const Apis = lazy(() => import('AppComponents/Apis/Apis' /* webpackChunkName: "DeferredAPIs" */));
@@ -210,7 +209,7 @@ export default class Protected extends Component {
                                         <Route path='/apis' component={DeferredAPIs} />
                                         <Route path='/api-products' component={DeferredAPIs} />
                                         <Route path='/service-catalog' component={ServiceCatalogRouting} />
-                                        <Route path={CONSTS.BACKOFFICE.BO_API_ROUTE} component={BackofficeRouting} />
+                                        <Route path='/backoffice-apis' component={BackofficeRouting} />
                                         <Route component={ResourceNotFound} />
                                     </Switch>
                                 </AppContextProvider>
