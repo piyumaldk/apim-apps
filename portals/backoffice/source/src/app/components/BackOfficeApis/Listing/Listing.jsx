@@ -26,7 +26,6 @@ import Onboarding from 'AppComponents/BackOfficeApis/Listing/Onboarding';
 import Alert from 'AppComponents/Shared/Alert';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import API from 'AppData/api';
 import BackOfficeApisTopMenu from 'AppComponents/BackOfficeApis/Listing/components/BackOfficeApisTopMenu';
 
 /**
@@ -43,16 +42,16 @@ function Listing() {
     const intl = useIntl();
 
     // Get Services
-    const getData = (limit = 10, offset = 0) => {
-        const promisedServices = API.all({ limit, offset });
-        promisedServices.then((data) => {
-            const { body } = data;
-            setBackOfficeData(body);
+    const getData = (limit = 25, offset = 0) => {
+        // mock-fetch
+        const url = new URL(`https://virtserver.swaggerhub.com/SanojPunchihewa/BackOfficeAPI/1.0.0/backoffice-apis`);
+        const params = { limit, offset };
+        url.search = new URLSearchParams(params);
+        fetch(url).then(response => response.json()).then((data) => {
+            setBackOfficeData(data);
             // eslint-disable-next-line no-console
             console.log(data);
         }).catch((error) => {
-            // eslint-disable-next-line no-console
-            console.error(error);
             if (error.response) {
                 Alert.error(error.response.body.description);
             } else {
@@ -80,7 +79,8 @@ function Listing() {
     }
 
     // This count should be null when no BackOffice APIs and should be >0 when have. (Length)
-    const haveBackOfficeData = null;
+    const haveBackOfficeData = backOfficeData.list.length !== 0;
+    
     return (
         <Box flexGrow={1}>
             <Grid
