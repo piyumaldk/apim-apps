@@ -27,15 +27,16 @@ import Alert from 'AppComponents/Shared/Alert';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import BackOfficeApisTopMenu from 'AppComponents/BackOfficeApis/Listing/components/BackOfficeApisTopMenu';
+import BackOfficeCardView from 'AppComponents/BackOfficeApis/Listing/components/BackOfficeCardView';
 
 /**
- * Listing for service catalog entries
+ * Listing for BackOffice APIs List
  *
  * @function Listing
- * @returns {any} Listing Page for Services
+ * @returns {any} Listing Page for BackOffice APIs
  */
 function Listing() {
-    const [backOfficeData, setBackOfficeData] = useState(null);
+    const [backOfficeApisData, setBackOfficeApisData] = useState(null);
     const [notFound, setNotFound] = useState(false);
     const [loading, setLoading] = useState(true);
     const [isGridView, setIsGridView] = useState(true);
@@ -48,7 +49,7 @@ function Listing() {
         const params = { limit, offset };
         url.search = new URLSearchParams(params);
         fetch(url).then(response => response.json()).then((data) => {
-            setBackOfficeData(data);
+            setBackOfficeApisData(data);
             // eslint-disable-next-line no-console
             console.log(data);
         }).catch((error) => {
@@ -71,7 +72,7 @@ function Listing() {
 
     useEffect(getData, []);
 
-    if (loading || !backOfficeData) {
+    if (loading || !backOfficeApisData) {
         return <Progress per={90} message='Loading BackOffice APIs ...' />;
     }
     if (notFound) {
@@ -79,7 +80,7 @@ function Listing() {
     }
 
     // This count should be null when no BackOffice APIs and should be >0 when have. (Length)
-    const haveBackOfficeData = backOfficeData.list.length !== 0;
+    const haveBackOfficeData = backOfficeApisData.list.length !== 0;
     
     return (
         <Box flexGrow={1}>
@@ -102,7 +103,11 @@ function Listing() {
                         {!haveBackOfficeData && <Onboarding />}
                         {haveBackOfficeData && (isGridView
                             ? (
-                                <h1>BackOffice API Page Gird View</h1>
+                                <BackOfficeCardView
+                                    backOfficeApisList={backOfficeApisData.list}
+                                    pagination={backOfficeApisData.pagination}
+                                    getData={getData}
+                                />
                             )
                             : <h1>BackOffice API Page Table View</h1>)}
                     </Grid>
