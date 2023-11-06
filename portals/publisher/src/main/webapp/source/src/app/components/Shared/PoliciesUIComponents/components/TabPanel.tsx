@@ -35,7 +35,7 @@ interface TabPanelProps {
  * @param {JSON} props Input props from parent components.
  * @returns {TSX} Tab panel.
  */
-const TabPanel: FC<TabPanelProps> = ({
+const SharedTabPanel: FC<TabPanelProps> = ({
     index,
     policyList,
     selectedTab,
@@ -69,4 +69,4 @@ const TabPanel: FC<TabPanelProps> = ({
     );
 };
 
-export default TabPanel;
+export default SharedTabPanel;
