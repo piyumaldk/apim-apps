@@ -24,8 +24,8 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import { FormattedMessage } from 'react-intl';
 import GeneralDetails from 'AppComponents/GlobalPolicies/Policies/PolicyForm/GeneralDetails';
+import PolicyAttributes from 'AppComponents/GlobalPolicies/Policies/PolicyForm/PolicyAttributes';
 import type { PolicySpec, PolicySpecAttribute } from '../Types';
-import PolicyAttributes from './PolicyAttributes';
 import SourceDetails from './SourceDetails';
 import uuidv4 from '../Utils';
 

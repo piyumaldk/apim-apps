@@ -16,7 +16,7 @@
  * under the License.
  */
 
-import React, { FC, useState, } from 'react';
+import React, { FC } from 'react';
 import { Button, makeStyles, Theme } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
@@ -28,7 +28,7 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import PriorityHighOutlined from '@material-ui/icons/PriorityHighOutlined';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import Tooltip from '@material-ui/core/Tooltip';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
@@ -72,6 +72,19 @@ interface PolicyAttributesProps {
     policyAttributes: PolicyAttribute[];
     dispatch?: React.Dispatch<any>;
     isViewMode: boolean;
+    addNewPolicyAttribute: any;
+    getAttributeFormError: any;
+    handleAttributeChange: any;
+    handleToggle: any;
+    handleDescriptionToggle: any;
+    openedDescriptionPopoverId: any;
+    descriptionAnchorEl: any;
+    handleDescriptionClose: any;
+    handleValuePropertiesToggle: any;
+    openedValuesPopoverId: any;
+    valuePropertiesAnchorEl: any;
+    handleValuePropertiesClose: any;
+    handleAllowedValues: any;
 }
 
 /**
@@ -79,147 +92,25 @@ interface PolicyAttributesProps {
  * @param {JSON} props Input props from parent components.
  * @returns {TSX} Policy attributes UI.
  */
-const PolicyAttributes: FC<PolicyAttributesProps> = ({
-    policyAttributes, dispatch, isViewMode
+const SharedPolicyAttributes: FC<PolicyAttributesProps> = ({
+    policyAttributes, 
+    dispatch, 
+    isViewMode, 
+    addNewPolicyAttribute, 
+    getAttributeFormError, 
+    handleAttributeChange, 
+    handleToggle,
+    handleDescriptionToggle,
+    openedDescriptionPopoverId,
+    descriptionAnchorEl,
+    handleDescriptionClose,
+    handleValuePropertiesToggle,
+    openedValuesPopoverId,
+    valuePropertiesAnchorEl,
+    handleValuePropertiesClose,
+    handleAllowedValues
 }) => {
     const classes = useStyles();
-    const intl = useIntl();
-    const [descriptionAnchorEl, setDescriptionAnchorEl] = useState<HTMLButtonElement | null>(null);
-    const [valuePropertiesAnchorEl, setValuePropertiesAnchorEl] = useState<HTMLButtonElement | null>(null);
-    const [openedDescriptionPopoverId, setOpenedDescriptionPopoverId] = useState<string | null>(null);
-    const [openedValuesPopoverId, setOpenedValuesPopoverId] = useState<string | null>(null);
-
-    const addNewPolicyAttribute = () => {
-        if (dispatch) {
-            dispatch({ type: ACTIONS.ADD_POLICY_ATTRIBUTE });
-        }
-    }
-
-    const getAttributeFormError = (attribute: PolicyAttribute, fieldName: string) => {
-        let error = '';
-        switch(fieldName) {
-            case 'name': {
-                if (attribute.name === '') {
-                    error = intl.formatMessage({
-                        id: 'Apis.Details.Policies.PolicyForm.PolicyAttributes.name.required.error',
-                        defaultMessage: 'Name is Empty',
-                    });
-                }
-                return error;
-            }
-            case 'displayName': {
-                if (attribute.displayName === '') {
-                    error = intl.formatMessage({
-                        id: 'Apis.Details.Policies.PolicyForm.PolicyAttributes.displayName.required.error',
-                        defaultMessage: 'Display Name is Empty',
-                    });
-                }
-                return error;
-            }
-            case 'validationRegex': {
-                const regex = attribute.validationRegex;
-                if (regex && regex !== '') {
-                    try {
-                        // eslint-disable-next-line no-new
-                        new RegExp(regex);
-                    } catch(e) {
-                        error = intl.formatMessage({
-                            id: 'AApis.Details.Policies.PolicyForm.PolicyAttributes.validationRegex.invalid',
-                            defaultMessage: 'Provided regular expression is invalid',
-                        })
-                    }
-                }
-                return error;
-            }
-            case 'defaultValue': {
-                const defaultVal = attribute.defaultValue;
-                const regex = attribute.validationRegex;
-                if (defaultVal && defaultVal !== '' && regex && regex !== '') {
-                    try {
-                        if (!new RegExp(regex).test(defaultVal)) {
-                            error = intl.formatMessage({
-                                id: 'Apis.Details.Policies.PolicyForm.PolicyAttributes.defaultValue.validation.error',
-                                defaultMessage: 'Please enter a valid input',
-                            });
-                        }
-                    } catch(e) {
-                        console.error(e);
-                    }
-                }
-                return error;
-            }
-            default:
-                return error;
-        }
-    }
-
-    /**
-     * Function to handle form inputs
-     * @param {any} event Event
-     * @param {string} id Policy Attribute ID
-     */
-    const handleAttributeChange = (event: any, id: string) => {
-        if (dispatch) {
-            dispatch({
-                type: ACTIONS.UPDATE_POLICY_ATTRIBUTE,
-                id,
-                field: event.target.name,
-                value: event.target.value
-            });
-        }
-    }
-
-    /**
-     * Function to handle toggle of required attribute
-     * @param {boolean} currentState Current state of the required attrbute before toggle
-     * @param {string} id Policy Attribute ID
-     */
-    const handleToggle = (currentState: boolean, id: string) => {
-        if (dispatch) {
-            dispatch({
-                type: ACTIONS.UPDATE_POLICY_ATTRIBUTE,
-                id,
-                field: 'required',
-                value: !currentState,
-            });
-        }
-    }
-
-    /**
-     * Function to handle allowed values attribute
-     * @param {React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>} event Event
-     * @param {string} id Policy Attribute ID
-     */
-    const handleAllowedValues = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>, id: string) => {
-        if (dispatch) {
-            dispatch({
-                type: ACTIONS.UPDATE_POLICY_ATTRIBUTE,
-                id,
-                field: event.target.name,
-                value: event.target.value.split(/[,][\s]*/)
-            });
-        }
-    }
-
-    // Description toggle button related actions
-    const handleDescriptionToggle = (event: React.FormEvent<HTMLButtonElement>, id: string) => {
-        setOpenedDescriptionPopoverId(id);
-        setDescriptionAnchorEl(event.currentTarget);
-    }
-    const handleDescriptionClose = () => {
-        setOpenedDescriptionPopoverId(null);
-        setDescriptionAnchorEl(null);
-    };
-
-    // Value properties toggle button related actions
-    const handleValuePropertiesToggle = (event: React.FormEvent<HTMLButtonElement>, id: string) => {
-        setOpenedValuesPopoverId(id);
-        setValuePropertiesAnchorEl(event.currentTarget);
-    }
-    const handleValuePropertiesClose = () => {
-        setOpenedValuesPopoverId(null);
-        setValuePropertiesAnchorEl(null);
-    };
 
     return (
         <>
@@ -737,4 +628,4 @@ const PolicyAttributes: FC<PolicyAttributesProps> = ({
     );
 }
 
-export default React.memo(PolicyAttributes);
+export default React.memo(SharedPolicyAttributes);

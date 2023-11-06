@@ -26,9 +26,9 @@ import { FormattedMessage } from 'react-intl';
 import { isRestricted } from 'AppData/AuthManager';
 import CONSTS from 'AppData/Constants';
 import GeneralDetails from 'AppComponents/GlobalPolicies/Policies/PolicyForm/GeneralDetails';
+import PolicyAttributes from 'AppComponents/GlobalPolicies/Policies/PolicyForm/PolicyAttributes';
 import type { CreatePolicySpec } from '../Types';
 import type { NewPolicyState, PolicyAttribute } from './Types';
-import PolicyAttributes from './PolicyAttributes';
 import uuidv4 from '../Utils';
 import SourceDetails from './SourceDetails';
 
