@@ -23,9 +23,9 @@ import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import { FormattedMessage } from 'react-intl';
+import GeneralDetails from 'AppComponents/GlobalPolicies/Policies/PolicyForm/GeneralDetails';
 import type { PolicySpec, PolicySpecAttribute } from '../Types';
 import PolicyAttributes from './PolicyAttributes';
-import GeneralDetails from './GeneralDetails';
 import SourceDetails from './SourceDetails';
 import uuidv4 from '../Utils';
 

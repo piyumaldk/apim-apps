@@ -25,11 +25,11 @@ import Paper from '@material-ui/core/Paper';
 import { FormattedMessage } from 'react-intl';
 import { isRestricted } from 'AppData/AuthManager';
 import CONSTS from 'AppData/Constants';
+import GeneralDetails from 'AppComponents/GlobalPolicies/Policies/PolicyForm/GeneralDetails';
 import type { CreatePolicySpec } from '../Types';
 import type { NewPolicyState, PolicyAttribute } from './Types';
 import PolicyAttributes from './PolicyAttributes';
 import uuidv4 from '../Utils';
-import GeneralDetails from './GeneralDetails';
 import SourceDetails from './SourceDetails';
 
 const useStyles = makeStyles((theme: Theme) => ({

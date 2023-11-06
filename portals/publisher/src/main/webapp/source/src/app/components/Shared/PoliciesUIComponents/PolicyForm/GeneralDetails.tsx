@@ -28,7 +28,6 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import { FormattedMessage } from 'react-intl';
 import FormControl from '@material-ui/core/FormControl';
-import { ACTIONS } from './PolicyCreateForm';
 
 const useStyles = makeStyles((theme: Theme) => ({
     mandatoryStar: {
@@ -47,8 +46,14 @@ interface GeneralDetailsProps {
     description: string;
     applicableFlows: string[];
     supportedApiTypes: string[];
-    dispatch?: React.Dispatch<any>;
     isViewMode: boolean;
+    handleApiTypeChange: any;
+    handleInputChange: any;
+    handleChange: any;
+    versionError: boolean;
+    nameError: boolean;
+    applicableFlowsError: boolean;
+    supportedApiTypesError: boolean;
 }
 
 /**
@@ -56,73 +61,23 @@ interface GeneralDetailsProps {
  * @param {JSON} props Input props from parent components.
  * @returns {TSX} General details of the policy.
  */
-const GeneralDetails: FC<GeneralDetailsProps> = ({
+const SharedGeneralDetails: FC<GeneralDetailsProps> = ({
     displayName,
     version,
     description,
     applicableFlows,
     supportedApiTypes,
-    dispatch,
     isViewMode,
+    handleApiTypeChange,
+    handleInputChange,
+    handleChange,
+    versionError,
+    nameError,
+    applicableFlowsError,
+    supportedApiTypesError,
 }) => {
     const classes = useStyles();
-
-    // Validates whether atleast one flow (i.e. request, response or fault) is selected
-    // True if none of the flows are selected.
-    const applicableFlowsError = applicableFlows.length === 0;
-
-    // Validates whether atleast one Api Type (i.e. HTTP, SOAP or SOAPTOREST) is selected
-    // True if none of the API types are selected.
-    const supportedApiTypesError = supportedApiTypes.length === 0;
-
-    // Name validation
-    const nameError = displayName === '';
-
-    // Version validation
-    const versionError = version === '';
-
-    /**
-     * Function to handle text field inputs
-     * @param {React.ChangeEvent<HTMLInputElement>} event event
-     */
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (dispatch) {
-            dispatch({
-                type: ACTIONS.UPDATE_POLICY_METADATA,
-                field: event.target.name,
-                value: event.target.value,
-            });
-        }
-    };
-
-    /**
-     * Function to handle applicable flows related checkbox changes
-     * @param {React.ChangeEvent<HTMLInputElement>} event event
-     */
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (dispatch) {
-            dispatch({
-                type: ACTIONS.UPDATE_APPLICALBLE_FLOWS,
-                name: event.target.name,
-                checked: event.target.checked,
-            });
-        }
-    };
-
-        /**
-     * Function to handle supported Api Type related checkbox changes
-     * @param {React.ChangeEvent<HTMLInputElement>} event event
-     */
-         const handleApiTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-            if (dispatch) {
-                dispatch({
-                    type: ACTIONS.UPDATE_SUPPORTED_API_TYPES,
-                    name: event.target.name,
-                    checked: event.target.checked,
-                });
-            }
-        };
-
+    
     return (
         <Box display='flex' flexDirection='row' mt={1}>
             <Box width='40%'>
@@ -211,12 +166,10 @@ const GeneralDetails: FC<GeneralDetailsProps> = ({
                             )
                         }
                         onChange={handleInputChange}
-                        inputProps={{
+                        InputProps={{
                             readOnly: isViewMode,
                             style: isViewMode ? { cursor: 'auto' } : {},
-                        }}
-                        InputProps={{
-                            startAdornment: <InputAdornment position="start">v</InputAdornment>,
+                            startAdornment: <InputAdornment position='start'>v</InputAdornment>,
                         }}
                     />
                     <TextField
@@ -411,4 +364,4 @@ const GeneralDetails: FC<GeneralDetailsProps> = ({
     );
 };
 
-export default React.memo(GeneralDetails);
+export default React.memo(SharedGeneralDetails);
