@@ -44,7 +44,7 @@ interface FlowArrowProps {
  * @param {JSON} props Input props from parent components.
  * @returns {TSX} Tab panel.
  */
-const FlowArrow: FC<FlowArrowProps> = ({ arrowDirection }) => {
+const SharedFlowArrow: FC<FlowArrowProps> = ({ arrowDirection }) => {
     const classes = useStyles();
 
     return (
@@ -70,4 +70,4 @@ const FlowArrow: FC<FlowArrowProps> = ({ arrowDirection }) => {
     );
 }
 
-export default FlowArrow;
+export default SharedFlowArrow;
