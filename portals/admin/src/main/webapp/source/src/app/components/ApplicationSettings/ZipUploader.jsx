@@ -41,10 +41,9 @@ const ZipUploader = () => {
                 } else if (/\.(png|jpe?g|gif|svg)$/.test(filename)) {
                     imagePromises.push(
                         fileData.async('blob').then((blob) => {
-                            // Remove the "carbon.super" part from the file path.
-                            const imageName = filename.replace(/^carbon\.super\//, '');
+                            const imageName = filename.split('/').slice(2).join('/'); 
                             const url = URL.createObjectURL(blob);
-                            assetMap[imageName] = url; // Use the processed key format
+                            assetMap[imageName] = url; 
                         }),
                     );
                 }
@@ -61,13 +60,18 @@ const ZipUploader = () => {
     };
 
     const renderTemplate = (templateName) => {
-        if (!templates[templateName]) {
+        if (!templates[templateName] || Object.keys(assets).length === 0) {
             return;
         }
         const compiledTemplate = Handlebars.compile(templates[templateName]);
-        // Pass the assets mapping in the context so templates can use them.
-        console.log(assets);
-        const output = compiledTemplate({ assets });
+        let output = compiledTemplate({});
+        // Image path manipulation in the template with assets
+        output = output.replace(/src="\/images\/([^"]+)"/g, (match, filename) => {
+            if (assets[filename]) {
+                return `src="${assets[filename]}"`; 
+            }
+            return match;
+        });
         setRenderedOutput(output);
     };
 
