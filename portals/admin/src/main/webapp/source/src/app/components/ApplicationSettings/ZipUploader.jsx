@@ -16,6 +16,7 @@ const ZipUploader = () => {
         const zip = new JSZip();
         const contents = await zip.loadAsync(file);
 
+        const partialPromises = [];
         const templatePromises = [];
         const cssPromises = [];
         const imagePromises = [];
@@ -24,9 +25,24 @@ const ZipUploader = () => {
         for (const [filename, fileData] of Object.entries(contents.files)) {
             if (!fileData.dir) {
                 if (filename.endsWith('.hbs')) {
-                    templatePromises.push(
-                        fileData.async('text').then((templateContent) => [filename, templateContent]),
-                    );
+                    const isPartial = filename.includes('partials/');
+                    if (isPartial) {
+                        partialPromises.push(
+                            fileData.async('text').then((content) => {
+                                const partialName = filename
+                                    .split('/')
+                                    .pop()
+                                    .replace('.hbs', '');
+                                Handlebars.registerPartial(partialName, content);
+                            }).catch((error) => {
+                                console.error('Error processing partial:', filename, error);
+                            }),
+                        );
+                    } else {
+                        templatePromises.push(
+                            fileData.async('text').then((templateContent) => [filename, templateContent]),
+                        );
+                    }
                 } else if (filename.endsWith('.css')) {
                     cssPromises.push(
                         fileData.async('text').then((cssContent) => {
@@ -62,6 +78,7 @@ const ZipUploader = () => {
             }
         }
 
+        await Promise.all(partialPromises);
         const templateEntries = await Promise.all(templatePromises);
         await Promise.all(cssPromises);
         await Promise.all(imagePromises);
