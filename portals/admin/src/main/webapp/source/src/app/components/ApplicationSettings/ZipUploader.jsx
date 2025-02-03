@@ -41,8 +41,10 @@ const ZipUploader = () => {
                 } else if (/\.(png|jpe?g|gif|svg)$/.test(filename)) {
                     imagePromises.push(
                         fileData.async('blob').then((blob) => {
+                            // Remove the "carbon.super" part from the file path.
+                            const imageName = filename.replace(/^carbon\.super\//, '');
                             const url = URL.createObjectURL(blob);
-                            assetMap[filename] = url;
+                            assetMap[imageName] = url; // Use the processed key format
                         }),
                     );
                 }
@@ -64,6 +66,7 @@ const ZipUploader = () => {
         }
         const compiledTemplate = Handlebars.compile(templates[templateName]);
         // Pass the assets mapping in the context so templates can use them.
+        console.log(assets);
         const output = compiledTemplate({ assets });
         setRenderedOutput(output);
     };
