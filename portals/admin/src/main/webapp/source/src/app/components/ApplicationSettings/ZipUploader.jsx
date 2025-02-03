@@ -39,11 +39,23 @@ const ZipUploader = () => {
                         }),
                     );
                 } else if (/\.(png|jpe?g|gif|svg)$/.test(filename)) {
+                    const imageName = filename.split('/').slice(2).join('/');
                     imagePromises.push(
-                        fileData.async('blob').then((blob) => {
-                            const imageName = filename.split('/').slice(2).join('/'); 
+                        fileData.async('uint8array').then((data) => {
+                            const extension = imageName.split('.').pop().toLowerCase();
+                            const mimeType = {
+                                svg: 'image/svg+xml',
+                                png: 'image/png',
+                                jpg: 'image/jpeg',
+                                jpeg: 'image/jpeg',
+                                gif: 'image/gif',
+                            }[extension] || 'application/octet-stream';
+                            const blob = new Blob([data], { type: mimeType });
                             const url = URL.createObjectURL(blob);
-                            assetMap[imageName] = url; 
+                            assetMap[imageName] = url;
+                        }).catch((error) => {
+                            console.error('Error processing file:', filename, error);
+                            assetMap[imageName] = null;
                         }),
                     );
                 }
@@ -68,7 +80,7 @@ const ZipUploader = () => {
         // Image path manipulation in the template with assets
         output = output.replace(/src="\/images\/([^"]+)"/g, (match, filename) => {
             if (assets[filename]) {
-                return `src="${assets[filename]}"`; 
+                return `src="${assets[filename]}"`;
             }
             return match;
         });
